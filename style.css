@@ -671,3 +671,268 @@ body {
 .dabao-btn:active {
   transform: translateY(-1px);
 }
+
+/* ================================================================ */
+/* NEW: CALENDAR TRIGGER BUTTON (on front choice screen)            */
+/* ================================================================ */
+.calendar-trigger-btn {
+  margin-top: 35px;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  border: 3px solid #ffd700;
+  border-radius: 50px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #fff9e6, #fff);
+  font-family: "Great Vibes", cursive;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #d9534f;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.35);
+  animation: calendarPulse 2.2s ease-in-out infinite;
+}
+
+.calendar-trigger-btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(255, 215, 0, 0.5);
+}
+
+@keyframes calendarPulse {
+  0%, 100% { box-shadow: 0 4px 15px rgba(255, 215, 0, 0.35); }
+  50% { box-shadow: 0 4px 25px rgba(255, 215, 0, 0.7); }
+}
+
+/* ================================================================ */
+/* NEW: CALENDAR MODAL                                               */
+/* ================================================================ */
+.calendar-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.calendar-modal-content {
+  background: #fff;
+  border-radius: 20px;
+  padding: 35px 30px;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: calendarPopIn 0.35s ease;
+}
+
+@keyframes calendarPopIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.close-calendar-btn,
+.close-birthday-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #d9534f;
+  line-height: 1;
+}
+
+.calendar-title {
+  color: #d9534f;
+  font-family: "Great Vibes", cursive;
+  font-size: 2rem;
+  margin: 0 0 5px 0;
+}
+
+.calendar-subtitle {
+  color: #999;
+  font-size: 0.95rem;
+  margin: 0 0 20px 0;
+  font-family: Arial, sans-serif;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 8px;
+  font-family: Arial, sans-serif;
+  font-size: 0.75rem;
+  color: #aaa;
+  font-weight: bold;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.calendar-day {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+  color: #555;
+  cursor: default;
+  background: #f7f7f7;
+  user-select: none;
+}
+
+.calendar-day.empty {
+  background: transparent;
+}
+
+.calendar-day.special-day {
+  background: linear-gradient(135deg, #ffd700, #ff69b4);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 0 rgba(255, 105, 180, 0.6);
+  animation: specialDayGlow 1.6s ease-in-out infinite;
+}
+
+.calendar-day.special-day:hover {
+  transform: scale(1.15);
+}
+
+@keyframes specialDayGlow {
+  0%, 100% { box-shadow: 0 0 6px rgba(255, 105, 180, 0.6); }
+  50% { box-shadow: 0 0 18px rgba(255, 105, 180, 0.95); }
+}
+
+/* ================================================================ */
+/* NEW: BIRTHDAY CELEBRATION MODAL                                   */
+/* ================================================================ */
+.birthday-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at center, #fff0f7 0%, #ffe0ec 100%);
+  z-index: 3000;
+  overflow-y: auto;
+  padding: 30px 15px;
+}
+
+.birthday-modal-content {
+  position: relative;
+  z-index: 10;
+  background: #fff;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 45px 35px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: calendarPopIn 0.4s ease;
+}
+
+.birthday-title {
+  color: #ff1493;
+  font-family: "Great Vibes", cursive;
+  font-size: 2.6rem;
+  margin: 10px 0 25px 0;
+  animation: titleFloat 2s ease-in-out infinite;
+}
+
+.birthday-message {
+  font-family: "Great Vibes", cursive;
+  font-size: 1.4rem;
+  color: #d9534f;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.birthday-message .bday-line {
+  margin: 12px 0;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.birthday-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.birthday-img {
+  max-width: 100%;
+  width: 260px;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ---- Confetti (crackers) ---- */
+.confetti-container {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 16px;
+  opacity: 0.9;
+  animation-name: confettiFall;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0.9;
+  }
+}
+
+/* ---- Floating hearts inside birthday modal ---- */
+.birthday-hearts {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.birthday-hearts .bh-heart {
+  position: absolute;
+  bottom: -40px;
+  font-size: 1.6rem;
+  opacity: 0.85;
+  animation-name: bheartFloat;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 1;
+}
+
+@keyframes bheartFloat {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.8);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(20px) scale(1.2);
+    opacity: 0;
+  }
+}
